@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Internship Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  	#jumbotron1 {
+	background: linear-gradient(rgb(89, 160, 247), rgb(84, 210, 242));
+	height:250px;
+}
+
+#brand{
+	float:left;
+	padding-left: 50px;
+}
+
+.brandh1{
+	float:left;
+	font-family:serif;
+}
+
+.brandp{
+	float:right;
+	color:white;
+	font-family:serif;
+}
+
+#logo{
+	float:right;
+	padding-right: 50px;
+}
+
+#logoimage{
+	width:220px;
+	height:150px
+}
+
+.well{
+	text-align: center;
+	background:linear-gradient(rgb(226, 115, 115),rgb(252, 80, 80));
+}
+
+#wellh1{
+	color:white;
+	font-family:Segoe Print;
+	font-size: 45px;
+	letter-spacing: 3px;
+}
+
+#jumbotron2{
+	margin: 20px 20px;
+}
+
+#title{
+	text-align: center;
+	padding-top: 50px;
+}
+
+#title a {
+	font-family: Algerian;
+	font-weight: bold;
+	color: rgb(23, 198, 53);
+	
+	text-decoration: none;
+	transition: 1s;
+}
+
+#title a:hover{
+	font-size: 50px;
+	font-weight: bold;
+	color:rgb(61, 244, 91);
+}
+body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+ 
+  .bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .container-fluid ul{
+	list-style:none;
+}
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+  #Predict{
+  	color:rgb(112, 39, 39);
+  	font-family:serif;
+  	font-size:100px;
+
+  }
+ label{
+ 	color:rgb(25, 4, 4);
+ }
+ .form-group{
+ 	padding-right:20px;
+ 	padding-left:20px;
+ 	padding-bottom: 5px;
+ }
+ #block{
+ 	background:linear-gradient(rgb(150, 232, 230),rgb(213, 242, 241));
+ }
+ /*#submit{
+ 	padding-right:220px;
+ 	padding-left:320px;
+ 	padding-bottom: 5px;
+ 	align-items: center;
+ }*/
+
+ #output{
+ 	color:black;
+ 	text-align: center;
+ 	padding-bottom: 5px;
+ }
+ #about{
+ 	padding-left: 10px;
+ 	padding-right: 10px;
+ 	color:black;
+ }
+</style>
+</head>
+<body>
+	<div class="jumbotron" id="jumbotron1">
+		<div id="brand">
+			<h3 class="brandh1" style="color: white"><b>G Sai Keerthana Reddy</b></h3>
+			<br>
+			<p class="brandp"><b>Abalone Age detection project...</b></p>
+		</div>
+		<div id="logo">
+			<!--<img src="data:image/png;base64,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" class="img-circle" id="logoimage"> -->
+		</div>
+	</div>
+	<div class = "container">
+		<div class="well well-sm">
+			<h3 id="wellh1">Solo Project</h3>
+			<h6 id="wellh1">on</h6>
+			<h4 id="wellh1">Age Detection using Machine Learning</h4>
+		</div>
+	</div>
+	<h1 id="title"><a href="#">ABALONE AGE PREDICTION</a></h1>
+	<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Abalone Age Prediction</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#l1">Predictor</a></li>
+        <li><a href="#l2">Abalone</a></li>
+        <li><a href="#l3">Done by:</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div id="block">
+		<div id="Predict">
+			<h1 id="l1">Predictor</h1>
+		</div>
+	<div id="form">
+	<form action="{{ url_for('predict')}}" method="post">
+		<div class="form-group">
+  			<label for="Sex">Sex:</label>
+  			<input type="text" class="form-control" name="Sex" id="Sex" placeholder="F-0    I-1    M-2">
+		</div>
+		<div class="form-group">
+			<label for="Length">Length:</label>
+  			<input type="text" class="form-control" name="Length"id="Length">
+		</div>
+		<div class="form-group">
+  			<label for="Diameter">Diameter:</label>
+  			<input type="text" class="form-control" name="Diameter" id="Diameter">
+		</div>
+		<div class="form-group">
+  			<label for="Height">Height:</label>
+  			<input type="text" class="form-control" name="Height" id="Height">
+		</div>
+		<div class="form-group">
+  			<label for="Whole-weight">Whole-weight:</label>
+  			<input type="text" class="form-control" name="Whole weight" id="Whole-weight">
+		</div>
+		<div class="form-group">
+  			<label for="Shucked-weight">Shucked-weight:</label>
+  			<input type="text" class="form-control" name="Shucked weight" id="Shucked-weight">
+		</div>
+		<div class="form-group">
+  			<label for="Viscera-weight">Viscera-weight:</label>
+  			<input type="text" class="form-control" name="Viscera weight" id="Viscera-weight">
+		</div>
+		<div class="form-group">
+  			<label for="Shell-weight">Shell-weight:</label>
+  			<input type="text" class="form-control" name="Shell weight" id="Shell-weight">
+		</div>
+		<div class="form-group" id="submit">
+  			<center><button type="submit" class="btn btn-primary btn-block btn-large" id="submit" value="Predict"> Predict</button></center>
+		</div>
+
+		<div id="output">
+			<h3>{{ prediction_text }}</h3>
+		</div>
+	</form>
+	</div>
+</div>
+</div>
+
+<div class="container">
+	<div id="about">
+		<h1 id="l2"><b>Project Description:</b></h1>
+
+<h3><b>Description:</b></h3>
+<p>Abalone is a shellfish considered a delicacy in many parts of the world.Farmers usually cut the shells and count the rings through microscopes to estimate the abalones age. Telling the age of abalone is therefore difficult mainly because their size depends not only on their age, but on the availability of food as well. Moreover, abalone sometimes form the so-called 'stunted' populations which have their growth characteristics very different from other abalone populations This complex method increases the cost and limits its popularity.
+</p>
+<h3><b>Solution:</b></h3>
+<p>
+A dataset provided by the University of California Irvine Machine Learning Repository consists of physical characteristics of abalones and their ages. This study is a classification problem that aims to predict the age range of abalones using their physical characteristics. The data set is pre-processed to transform the problem of predicting the age to a classification problem. Two clustering algorithms, the k-means algorithm and a hierarchical clustering algorithm are and run to generate a large number of cluster centers. An web application is integrated to the model built.
+</p>
+	</div>
+</div>
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p id="l3"><u>Project By </u></p> 
+  <ul>
+  	<li>Keerthana Reddy</li>
+  	
+  </ul>
+</footer>
+
+</body>
+</html>
